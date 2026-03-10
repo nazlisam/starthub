@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal | Start.Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a.active,
+        .nav-menu a:hover {
+            color: #8B3A62;
+        }
+
+        .nav-menu li:first-child a {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .login-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #6f2d4e;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #f8f4f8;
+            padding: 100px 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 .purple {
+            color: #8B3A62;
+        }
+
+        .hero-text h1 .black {
+            color: #2d1f2e;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-info p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        .footer-info a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-links img {
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .footer-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}">
+                    <img src="https://starthub1.odoo.com/web/image/website/1/logo/Start.Hub?unique=62bb5c8" alt="StartHub">
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}" class="active">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('hizmetler') }}">Hizmetler</a></li>
+                <li><a href="{{ url_for('basari_oykuleri') }}">Başarı Öyküleri</a></li>
+                <li><a href="{{ url_for('hakkimizda') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('bize_ulasin') }}">Bize Ulaşın</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="{{ url_for('ara') }}" style="color: inherit;">
+                    <i class="fas fa-search search-icon"></i>
+                </a>
+                <a href="{{ url_for('giris_yap') }}" class="login-link">
+                    <i class="fas fa-user"></i> Giriş Yap
+                </a>
+                <a href="{{ url_for('profil') }}" class="btn-primary">Portal</a>
+                <a href="{{ url_for('bize_ulasin') }}" class="btn-primary">Bize Ulaşın</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="investment-section" style="background-color: #f9f9f9; padding: 50px;">
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            
+            <h2 style="text-align: center; color: #2d1f2e;">
+                Sayın {{ girisimci.isim }}, Sizin İçin En Uygun Yatırımcılar
+            </h2>
+            <p style="text-align: center;">Yapay zeka destekli Heap algoritmamız ile seçildi.</p>
+            
+            <div class="matches-grid" style="display: grid; gap: 20px; margin-top: 30px;">
+                
+                {% for yatirimci in eslesmeler %}
+                <div class="match-card" style="background: white; padding: 25px; border-radius: 15px; border-left: 5px solid #8B3A62; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        
+                        <div>
+                            <h3 style="margin: 0; color: #2d1f2e;">{{ yatirimci.isim }}</h3>
+                            <span style="color: #6c757d; font-size: 0.9em;">{{ yatirimci.sirket }}</span>
+                            <div style="margin-top: 10px;">
+                                {% for sektor in yatirimci.sektorler %}
+                                <span style="background: #f0e8f8; color: #8B3A62; padding: 5px 10px; border-radius: 15px; font-size: 0.8em;">{{ sektor }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <div style="font-size: 24px; font-weight: bold; color: #4CAF50;">%{{ yatirimci.uyum_puani }}</div>
+                            <span style="font-size: 0.8em; color: #999;">Uyum Puanı</span>
+
+                            <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px; text-align: left;">
+                                <div style="font-size: 11px; color: #6c757d; margin-bottom: 5px;">
+                                    <i class="fas fa-project-diagram" style="color: #8B3A62;"></i> Network (Graph)
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="flex: 1; height: 6px; background: #e9ecef; border-radius: 3px; overflow: hidden; min-width: 60px;">
+                                        <div style="width: {{ yatirimci.network_yuzdesi }}%; height: 100%; background: #8B3A62;"></div>
+                                    </div>
+                                    <span style="font-weight: bold; color: #2d1f2e; font-size: 13px;">
+                                        {{ yatirimci.network_gucu }} Bağlantı
+                                    </span>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+                {% else %}
+                <p style="text-align: center;">Kriterlerinize uygun yatırımcı bulunamadı.</p>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>8000 Marina Blvd, Suite 300 - Brisbane CA 94005 - Birleşik Devletler</p>
+                <p><a href="mailto:info@starthub.example.com">info@starthub.example.com</a></p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Telif hakkı © StartHub</p>
+                <div class="footer-links">
+                    <a href="{{ url_for('admin_mesajlar') }}" style="color: #6c757d; font-size: 12px;">v2.1</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

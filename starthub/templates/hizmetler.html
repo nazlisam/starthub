@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizmetler | Start.Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a.active,
+        .nav-menu a:hover {
+            color: #8B3A62;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .login-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #6f2d4e;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(61, 46, 56, 0.95), rgba(139, 58, 98, 0.85)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%233d2e38" width="1200" height="400"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 70px;
+            color: #2d1f2e;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(139, 58, 98, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d1f2e;
+        }
+
+        .service-description {
+            font-size: 16px;
+            color: #6c757d;
+            line-height: 1.7;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            background: linear-gradient(135deg, rgba(61, 46, 56, 0.95), rgba(139, 58, 98, 0.85)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%233d2e38" width="1200" height="400"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-icon {
+            background: #8B3A62;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 30px;
+        }
+
+        .testimonial-content {
+            background: white;
+            color: #2d1f2e;
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #2d1f2e;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .slider-nav.prev {
+            left: -70px;
+        }
+
+        .slider-nav.next {
+            right: -70px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: white;
+            padding: 80px 40px;
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 50px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .partner-logo svg {
+            max-width: 140px;
+            height: auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8f4f8;
+            padding: 100px 40px;
+        }
+
+        .cta-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #2d1f2e;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            background: #8B3A62;
+            color: white;
+            padding: 15px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #6f2d4e;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-info p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        .footer-info a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-links img {
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-container {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .slider-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}">
+                    <img src="https://starthub1.odoo.com/web/image/website/1/logo/Start.Hub?unique=62bb5c8" alt="StartHub">
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('hizmetler') }}" class="active">Hizmetler</a></li>
+                <li><a href="{{ url_for('basari_oykuleri') }}">Başarı Öyküleri</a></li>
+                <li><a href="{{ url_for('hakkimizda') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('bize_ulasin') }}">Bize Ulaşın</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="{{ url_for('ara') }}" style="color: inherit;">
+    <i class="fas fa-search search-icon"></i>
+</a>
+                <a href="{{ url_for('giris_yap') }}" class="login-link">
+                    <i class="fas fa-user"></i> Giriş Yap
+                </a>
+                <a href="{{ url_for('profil') }}" class="btn-primary">Portal</a>
+                <a href="{{ url_for('bize_ulasin') }}" class="btn-primary">Bize Ulaşın</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Hizmetler</h1>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="section-title">Neler Yapıyoruz?</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://r.resimlink.com/-4YDIqVn9B.jpeg" alt="Özellik 1" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Stratejik Girişim Analizi</h3>
+                        <p class="service-description">Platformumuza katılan her proje, uzman ekibimiz tarafından finansal ve operasyonel açılardan detaylı bir incelemeye alınır. Girişiminizin pazar potansiyelini, iş modelini ve büyüme kapasitesini analiz ederek yatırımcı sunumuna en hazır hale getiriyoruz. Bu sayede sadece bir fikir değil, ayakları yere basan bir yatırım fırsatı sunuyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://r.resimlink.com/0xXG7vd3.jpeg" alt="Özellik 2" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Akıllı Yatırımcı Eşleştirmesi</h3>
+                        <p class="service-description">Yapay zeka destekli algoritmalarımız sayesinde, girişimcileri sadece sermaye sağlayanlarla değil, vizyonu ve sektör tecrübesiyle değer katacak "doğru" yatırımcılarla buluşturuyoruz. Sektör filtreleme ve ilgi alanı analizi ile her iki tarafın beklentilerinin %100 örtüştüğü, yüksek başarı oranlı stratejik eşleşmeler sağlıyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://r.resimlink.com/ZoG8B3kv2r.jpeg" alt="Özellik 3" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Uçtan Uca Mentorluk Desteği</h3>
+                        <p class="service-description">Eşleşme sağlandıktan sonra sürecimiz sona ermiyor. Yatırım sonrası hukuki süreçler, hisse yapılandırması ve büyüme stratejileri konularında her iki tarafa da kapsamlı danışmanlık sağlıyoruz. Girişimcilerin sermayeyi en verimli şekilde kullanması, yatırımcıların ise portföylerini güvenle yönetmesi için profesyonel köprü görevini üstleniyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <div class="quote-icon">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            
+            <div class="testimonial-content">
+                <p class="testimonial-text">" Yatırımcılarımızdan biri, bu platformun girişimciler için ne kadar değerli olduğunu vurguladı. Bu tür bağlantılar, başarıyı getiriyor. "</p>
+                
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop" alt="Elif Yılmaz" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Elif Yılmaz</h4>
+                        <p>Yatırımcı Eşleştirme Müdürü</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-nav prev" onclick="previousSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-nav next" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <circle cx="15" cy="25" r="12" fill="#2d1f2e"/>
+                        <text x="35" y="32" font-size="20" font-weight="700" fill="#2d1f2e">Amsterdam</text>
+                    </svg>
+                </div>
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <rect x="5" y="15" width="20" height="20" fill="#8B3A62"/>
+                        <text x="35" y="32" font-size="20" font-weight="700" fill="#2d1f2e">Firenze</text>
+                    </svg>
+                </div>
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <polygon points="15,10 25,35 5,35" fill="#3d4e5c"/>
+                        <text x="35" y="32" font-size="20" font-weight="700" fill="#2d1f2e">Nairobi</text>
+                    </svg>
+                </div>
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <path d="M 5 25 L 25 25 M 15 15 L 15 35" stroke="#8B3A62" stroke-width="3" fill="none"/>
+                        <text x="35" y="32" font-size="20" font-weight="700" fill="#2d1f2e">Madrid</text>
+                    </svg>
+                </div>
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <rect x="5" y="20" width="20" height="10" fill="#2d1f2e"/>
+                        <text x="35" y="32" font-size="20" font-weight="700" fill="#2d1f2e">KOBE</text>
+                    </svg>
+                </div>
+                <div class="partner-logo">
+                    <svg width="140" height="50" viewBox="0 0 140 50">
+                        <rect x="5" y="15" width="15" height="20" fill="#3d4e5c"/>
+                        <circle cx="12.5" cy="25" r="5" fill="white"/>
+                        <text x="30" y="32" font-size="20" font-weight="700" fill="#2d1f2e">Berlin.</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-text">
+                <h2>50.000'den fazla şirket, işlerini<br>büyütmek için StartHub'ı kullanıyor.</h2>
+            </div>
+            <a href="#" class="cta-button">Başla</a>
+        </div>
+    </section>
+
+   <!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>8000 Marina Blvd, Suite 300 - Brisbane CA 94005 - Birleşik Devletler</p>
+            <p><a href="mailto:info@starthub.example.com">info@starthub.example.com</a></p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Telif hakkı © StartHub</p>
+            <div class="footer-links">
+                <!-- GİZLİ ADMIN LİNKİ -->
+                <a href="{{ url_for('admin_mesajlar') }}" style="color: #6c757d; font-size: 12px;">v2.1</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Testimonial slider functionality
+        let currentSlide = 0;
+        const testimonials = [
+            {
+                text: '" Yatırımcılarımızdan biri, bu platformun girişimciler için ne kadar değerli olduğunu vurguladı. Bu tür bağlantılar, başarıyı getiriyor. "',
+                author: 'Elif Yılmaz',
+                role: 'Yatırımcı Eşleştirme Müdürü',
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop'
+            },
+            {
+                text: '" StartHub sayesinde doğru yatırımcıyla tanıştık ve şirketimizi bir sonraki seviyeye taşıdık. Harika bir deneyim! "',
+                author: 'Mehmet Yılmaz',
+                role: 'Kurucu Ortak',
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop'
+            },
+            {
+                text: '" Platform üzerindeki eşleştirme algoritması gerçekten etkili. İş planımıza uygun yatırımcıları bulmak çok kolay oldu. "',
+                author: 'Ayşe Demir',
+                role: 'CEO',
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop'
+            }
+        ];
+
+        function updateTestimonial() {
+            const testimonial = testimonials[currentSlide];
+            document.querySelector('.testimonial-text').textContent = testimonial.text;
+            document.querySelector('.author-avatar').src = testimonial.image;
+            document.querySelector('.author-info h4').textContent = testimonial.author;
+            document.querySelector('.author-info p').textContent = testimonial.role;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        }
+
+        // Auto-advance testimonials every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>

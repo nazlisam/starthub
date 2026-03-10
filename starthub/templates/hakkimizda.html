@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | Start.Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a.active,
+        .nav-menu a:hover {
+            color: #8B3A62;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .login-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #6f2d4e;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(61, 46, 56, 0.95), rgba(139, 58, 98, 0.85));
+            padding: 80px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* About Section 1 */
+        .about-section-1 {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #2d1f2e;
+        }
+
+        .about-content p {
+            font-size: 17px;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-program {
+            margin-top: 40px;
+        }
+
+        .about-program h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d1f2e;
+        }
+
+        .about-program p {
+            font-size: 16px;
+            color: #6c757d;
+            line-height: 1.8;
+        }
+
+        .btn-secondary {
+            background: #3d4e5c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+
+        .btn-secondary:hover {
+            background: #2d3e4c;
+        }
+
+        .about-illustration {
+            position: relative;
+        }
+
+        .illustration-wrapper {
+            background: linear-gradient(135deg, #f8e8f0, #f0e8f8);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            padding: 60px;
+            position: relative;
+        }
+
+        .illustration-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .floating-leaves {
+            position: absolute;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.6;
+            color: #8B3A62;
+        }
+
+        .leaf-1 { top: 20%; right: 10%; }
+        .leaf-2 { top: 50%; right: -5%; }
+        .leaf-3 { bottom: 20%; left: 10%; }
+
+        /* About Section 2 */
+        .about-section-2 {
+            background: #f8f4f8;
+            padding: 100px 40px;
+        }
+
+        .about-container-reverse {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: #2d3e50;
+            padding: 100px 40px;
+            color: white;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .team-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .team-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .team-member {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .team-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 15px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .team-description {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8f4f8;
+            padding: 100px 40px;
+        }
+
+        .cta-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #2d1f2e;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            background: #8B3A62;
+            color: white;
+            padding: 15px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #6f2d4e;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-info p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        .footer-info a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-links img {
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .about-container,
+            .about-container-reverse {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .footer-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}">
+                    <img src="https://starthub1.odoo.com/web/image/website/1/logo/Start.Hub?unique=62bb5c8" alt="StartHub">
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('hizmetler') }}">Hizmetler</a></li>
+                <li><a href="{{ url_for('basari_oykuleri') }}">Başarı Öyküleri</a></li>
+                <li><a href="{{ url_for('hakkimizda') }}" class="active">Hakkımızda</a></li>
+                <li><a href="{{ url_for('bize_ulasin') }}">Bize Ulaşın</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="{{ url_for('ara') }}" style="color: inherit;">
+    <i class="fas fa-search search-icon"></i>
+</a>
+                <a href="{{ url_for('giris_yap') }}" class="login-link">
+                    <i class="fas fa-user"></i> Giriş Yap
+                </a>
+                <a href="{{ url_for('profil') }}" class="btn-primary">Portal</a>
+                <a href="{{ url_for('bize_ulasin') }}" class="btn-primary">Bize Ulaşın</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Hakkımızda</h1>
+    </section>
+
+    <!-- About Section 1 -->
+    <section class="about-section-1">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Yatırım fırsatlarınızı keşfedin</h2>
+                
+                <div class="about-program">
+                    <h3>Girişimci Destek Programı</h3>
+                    <p>Girişimcilik alanında lider olarak, her ölçekteki girişimcinin büyümesine katkıda bulunuyoruz.</p>
+                </div>
+
+                <div class="about-program">
+                    <h3>Yatırımcı Eşleştirme Platformu</h3>
+                    <p>Yatırımcı ve girişimciler için özel platformlar ve hizmetler sunma konusunda sağlam bir deneyim biriktirdik. Dünyanın dört bir yanındaki projelerden portföyümüzü kontrol edin.</p>
+                </div>
+
+                <a href="#" class="btn-secondary">Daha fazla bilgi edinin</a>
+            </div>
+
+            <div class="about-illustration">
+                <div class="illustration-wrapper">
+                    <svg class="illustration-image" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Phone Frame -->
+                        <rect x="100" y="50" width="200" height="350" rx="20" fill="#8B3A62"/>
+                        <rect x="110" y="60" width="180" height="330" rx="10" fill="#fff"/>
+                        
+                        <!-- Puzzle Pieces on Phone -->
+                        <g transform="translate(130, 100)">
+                            <!-- Puzzle piece 1 -->
+                            <path d="M 0 0 L 60 0 L 60 60 L 0 60 Z" fill="#8B3A62" opacity="0.3"/>
+                            <circle cx="30" cy="0" r="10" fill="#8B3A62" opacity="0.3"/>
+                            
+                            <!-- Puzzle piece 2 -->
+                            <path d="M 60 0 L 120 0 L 120 60 L 60 60 Z" fill="#8B3A62" opacity="0.4"/>
+                            
+                            <!-- Puzzle piece 3 -->
+                            <path d="M 0 60 L 60 60 L 60 120 L 0 120 Z" fill="#8B3A62" opacity="0.5"/>
+                            
+                            <!-- Puzzle piece 4 -->
+                            <path d="M 60 60 L 120 60 L 120 120 L 60 120 Z" fill="#8B3A62" opacity="0.6"/>
+                            <circle cx="90" cy="120" r="10" fill="#8B3A62" opacity="0.6"/>
+                        </g>
+                        
+                        <!-- Person holding puzzle piece -->
+                        <g transform="translate(280, 200)">
+                            <!-- Head -->
+                            <circle cx="20" cy="20" r="20" fill="#f4a5b9"/>
+                            
+                            <!-- Body -->
+                            <rect x="5" y="40" width="30" height="50" rx="5" fill="#3d4e5c"/>
+                            
+                            <!-- Arms -->
+                            <rect x="-10" y="45" width="15" height="40" rx="5" fill="#f4a5b9"/>
+                            <rect x="30" y="45" width="15" height="35" rx="5" fill="#f4a5b9"/>
+                            
+                            <!-- Legs -->
+                            <rect x="8" y="90" width="10" height="40" rx="5" fill="#6c7d8f"/>
+                            <rect x="22" y="90" width="10" height="40" rx="5" fill="#6c7d8f"/>
+                            
+                            <!-- Puzzle piece in hand -->
+                            <rect x="-25" y="40" width="20" height="20" rx="2" fill="#8B3A62"/>
+                        </g>
+                    </svg>
+                    
+                    <div class="floating-leaves">
+                        <div class="leaf leaf-1">🍃</div>
+                        <div class="leaf leaf-2">🍂</div>
+                        <div class="leaf leaf-3">🍃</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section 2 -->
+    <section class="about-section-2">
+        <div class="about-container-reverse">
+            <div class="about-illustration">
+                <div class="illustration-wrapper">
+                    <svg class="illustration-image" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Phone Frame -->
+                        <rect x="100" y="50" width="200" height="350" rx="20" fill="#3d4e5c"/>
+                        <rect x="110" y="60" width="180" height="330" rx="10" fill="#8B3A62"/>
+                        
+                        <!-- Checkmark Circle -->
+                        <circle cx="200" cy="200" r="60" fill="#4CAF50"/>
+                        <path d="M 170 200 L 190 220 L 230 180" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Person jumping -->
+                        <g transform="translate(150, 280)">
+                            <!-- Head -->
+                            <circle cx="20" cy="0" r="18" fill="#f4a5b9"/>
+                            
+                            <!-- Body -->
+                            <rect x="8" y="18" width="24" height="40" rx="5" fill="#ff6b9d"/>
+                            
+                            <!-- Arms (raised) -->
+                            <rect x="-8" y="20" width="12" height="30" rx="5" fill="#ff6b9d" transform="rotate(-30 -2 20)"/>
+                            <rect x="36" y="20" width="12" height="30" rx="5" fill="#ff6b9d" transform="rotate(30 42 20)"/>
+                            
+                            <!-- Legs (dynamic) -->
+                            <rect x="10" y="58" width="8" height="35" rx="4" fill="#3d4e5c" transform="rotate(-20 14 58)"/>
+                            <rect x="22" y="58" width="8" height="35" rx="4" fill="#3d4e5c" transform="rotate(10 26 58)"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <h2>Yatırımcı ve girişimci ilişkilerini güçlendiren strateji</h2>
+                <p>Yatırımcılar ve girişimciler arasında güçlü bağlantılar kurarak, her iki tarafın da potansiyelini en üst düzeye çıkarıyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-header">
+                <h2>Venza</h2>
+                <p>Ekibimizle tanışın</p>
+                <p style="margin-top: 10px;">Başarımızı destekleyen profesyoneller</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/ARTFxE9wX.jpg" alt="Zeliha Nur İNANÇ" class="team-avatar">
+                    <div class="team-info">
+                        <h3>Zeliha Nur İNANÇ</h3>
+                        <div class="team-role">Co-Founder & Bilgisayar Mühendisi</div>
+                        <p class="team-description">Zeliha Nur, platformun teknolojik altyapısını ve veri stratejilerini yöneten vizyoner bir liderdir. Karmaşık algoritmaları sade ve kullanıcı dostu deneyimlere dönüştürme konusundaki tutkusuyla, yatırımcı ve girişimci eşleşmelerinin en güvenilir dijital zeminde gerçekleşmesini sağlar. Yenilikçi çözümleriyle ekosistemi büyütmeye odaklanmaktadır.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/4MRupZz.jpeg" alt="Nazlı ŞAM" class="team-avatar">
+                    <div class="team-info">
+                        <h3>Nazlı ŞAM</h3>
+                        <div class="team-role">Co-Founder & Bilgisayar Mühendisi</div>
+                        <p class="team-description">Nazlı, operasyonel mükemmeliyet ve sürdürülebilir büyüme stratejileri üzerine yoğunlaşan bir mühendislik zekasına sahiptir. Girişimlerin finansal yol haritalarını dijitalleştirme ile birleştirerek, projelerin doğru sermayeye en verimli şekilde buluşması için kritik bir köprü görevi üstlenir. Analitik bakış açısıyla şirketin küresel vizyonuna yön vermektedir.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop" alt="Azra Karakaya" class="team-avatar">
+                    <div class="team-info">
+                        <h3>Azra Karakaya</h3>
+                        <div class="team-role">Teknolojiden Sorumlu Başkan</div>
+                        <p class="team-description">Azra, girişimcilere stratejik rehberlik yaparak onların büyüme hedeflerine ulaşmalarına yardımcı olur.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop" alt="Zeynep Kerey" class="team-avatar">
+                    <div class="team-info">
+                        <h3>Zeynep Kerey</h3>
+                        <div class="team-role">Pazarlama Direktörü</div>
+                        <p class="team-description">Zeynep, uluslararası yatırım deneyimiyle, projelerin değerini artırmamıza yardımcı oluyor. Başarıyı artırmaya kararlıdır ve şirketi bir sonraki seviyeye taşımak için profesyonel zekasını sunar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-text">
+                <h2>50.000'den fazla şirket, işlerini<br>büyütmek için StartHub'ı kullanıyor.</h2>
+            </div>
+            <a href="#" class="cta-button">Başla</a>
+        </div>
+    </section>
+
+   <!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>8000 Marina Blvd, Suite 300 - Brisbane CA 94005 - Birleşik Devletler</p>
+            <p><a href="mailto:info@starthub.example.com">info@starthub.example.com</a></p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Telif hakkı © StartHub</p>
+            <div class="footer-links">
+                <!-- GİZLİ ADMIN LİNKİ -->
+                <a href="{{ url_for('admin_mesajlar') }}" style="color: #6c757d; font-size: 12px;">v2.1</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

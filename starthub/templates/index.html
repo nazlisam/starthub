@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Start.Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a.active,
+        .nav-menu a:hover {
+            color: #8B3A62;
+        }
+
+        .nav-menu li:first-child a {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .login-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: #8B3A62;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #6f2d4e;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #f8f4f8;
+            padding: 100px 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 .purple {
+            color: #8B3A62;
+        }
+
+        .hero-text h1 .black {
+            color: #2d1f2e;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Section 2 - Strategy */
+        .strategy-section {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .strategy-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .strategy-image img {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .strategy-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            color: #2d1f2e;
+        }
+
+        .strategy-text p {
+            font-size: 17px;
+            color: #6c757d;
+            line-height: 1.8;
+        }
+
+        /* Section 3 - Features */
+        .features-section {
+            background: #f8f9fa;
+            padding: 100px 40px;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d1f2e;
+        }
+
+        .features-header p {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 70px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-number {
+            font-size: 72px;
+            font-weight: 300;
+            color: #3d4e5c;
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2d1f2e;
+            margin-bottom: 30px;
+        }
+
+        .feature-card img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+        }
+
+        /* Section 4 - Investment */
+        .investment-section {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .investment-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .investment-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 50px;
+            color: #2d1f2e;
+        }
+
+        .investment-item {
+            margin-bottom: 40px;
+        }
+
+        .investment-item h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d1f2e;
+        }
+
+        .investment-item p {
+            font-size: 16px;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            background: #3d4e5c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #2d3e4c;
+        }
+
+        .investment-image img {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Section 5 - Team */
+        .team-section {
+            background: #3d2638;
+            padding: 100px 40px;
+            color: white;
+            position: relative;
+        }
+
+        .team-section::before,
+        .team-section::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: white;
+        }
+
+        .team-section::before {
+            top: 0;
+            border-radius: 0 0 50% 50%;
+        }
+
+        .team-section::after {
+            bottom: 0;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-header {
+            margin-bottom: 60px;
+        }
+
+        .team-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .team-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .team-member {
+            text-align: left;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 15px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .team-description {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 18px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* Section 6 - Partners */
+        .partners-section {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .partners-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2d1f2e;
+        }
+
+        .partners-text p {
+            font-size: 17px;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .partners-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Logoları 3'lü yan yana dizer */
+    gap: 40px;
+    align-items: center;
+    justify-items: center;
+    margin-top: 30px;
+}
+
+.partner-logo img {
+    max-width: 100px; /* Boyutu ayarlar */
+    height: auto;
+    filter: grayscale(100%); /* Siyah beyaz yapar */
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.partner-logo img:hover {
+    filter: grayscale(0%); /* Üstüne gelince renklenir */
+    opacity: 1;
+}
+        /* Section 7 - CTA */
+        .cta-section {
+            background: #f8f4f8;
+            padding: 100px 40px;
+        }
+
+        .cta-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #2d1f2e;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            background: #8B3A62;
+            color: white;
+            padding: 15px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #6f2d4e;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-info p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        .footer-info a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #8B3A62;
+            text-decoration: none;
+        }
+
+        .footer-links img {
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-container,
+            .strategy-container,
+            .investment-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-container {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .features-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-logos {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .footer-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}">
+                    <img src="https://starthub1.odoo.com/web/image/website/1/logo/Start.Hub?unique=62bb5c8" alt="StartHub">
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}" class="active">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('hizmetler') }}">Hizmetler</a></li>
+                <li><a href="{{ url_for('basari_oykuleri') }}">Başarı Öyküleri</a></li>
+                <li><a href="{{ url_for('hakkimizda') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('bize_ulasin') }}">Bize Ulaşın</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="{{ url_for('ara') }}" style="color: inherit; text-decoration: none;">
+    <i class="fas fa-search search-icon"></i>
+</a>
+</a>
+                <a href="{{ url_for('giris_yap') }}" class="login-link">
+                    <i class="fas fa-user"></i> Giriş Yap
+                </a>
+                <a href="{{ url_for('profil') }}" class="btn-primary">Portal</a>
+                <a href="{{ url_for('bize_ulasin') }}" class="btn-primary">Bize Ulaşın</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>
+                    <span class="purple">yatırımcı</span><br>
+                    <span class="black">girişimci</span><br>
+                    <span class="black">eşleştirme</span><br>
+                    <span class="black">platformu</span>
+                </h1>
+                <p>Girişimcilerin potansiyelini ortaya çıkarmak için tasarlanmış, etkili eşleştirme süreçleri sunuyoruz.</p>
+                <a href="#" class="btn-primary">Şimdi Başlayın</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://r.resimlink.com/TBkoltDq.png" alt="Hero Illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategy-section">
+        <div class="strategy-container">
+            <div class="strategy-image">
+                <img src="https://r.resimlink.com/skTuEb.png" alt="Strategy">
+            </div>
+            <div class="strategy-text">
+                <h2>Yatırımcı ve girişimci ilişkilerini güçlendiren strateji</h2>
+                <p>Yatırımcılar ve girişimciler arasında güçlü bağlantılar kurarak, her iki tarafın da potansiyelini en üst düzeye çıkarıyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-header">
+                <h2>Başarıyı<br>Yatırımla Yakalıyoruz</h2>
+                <p>Girişimcileri Yatırımcılarla Buluşturuyoruz</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">Yatırımcı Eşleştirme</h3>
+                    <img src="https://r.resimlink.com/fMyDs9nioa.png" alt="Feature 1">
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">Güvenilirlik</h3>
+                    <img src="https://r.resimlink.com/qUzGeBd3X.png" alt="Feature 2">
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">Yenilikçilik</h3>
+                    <img src="https://r.resimlink.com/4J_eZMgxz5.png" alt="Feature 3">
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">04</div>
+                    <h3 class="feature-title">Ölçeklenebilirlik</h3>
+                    <img src="https://r.resimlink.com/FqjeaoQb2T_P.png" alt="Feature 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section class="investment-section">
+        <div class="investment-container">
+            <div class="investment-text">
+                <h2>Yatırım fırsatlarınızı keşfedin</h2>
+
+                <div class="investment-item">
+                    <h3>Girişimci Destek Programı</h3>
+                    <p>Girişimcilik alanında lider olarak, her ölçekteki girişimcinin büyümesine katkıda bulunuyoruz.</p>
+                </div>
+
+                <div class="investment-item">
+                    <h3>Yatırımcı Eşleştirme Platformu</h3>
+                    <p>Yatırımcı ve girişimciler için özel platformlar ve hizmetler sunma konusunda sağlam bir deneyim biriktirdik. Dünyanın dört bir yanındaki projelerden portföyümüzü kontrol edin.</p>
+                </div>
+
+                <a href="#" class="btn-secondary">Daha fazla bilgi edinin</a>
+            </div>
+            <div class="investment-image">
+                <img src="https://r.resimlink.com/TRndYw.png" alt="Investment">
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-header">
+                <h2>PROFESYONEL YATIRIMCILAR</h2>
+                <p>Başarımızı destekleyen profesyoneller</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/prXxghlewE.jpeg" alt="Fazıl Demir" class="team-avatar">
+                    <h3>Fazıl Demir</h3>
+                    <div class="team-role">Yazılım</div>
+                    <p class="team-description">Fazıl, yenilikçi teknoloji girişimlerinin dijital dönüşüm stratejilerini kurgular ve onları doğru sermaye ile buluşturur.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/8LJ2qayCfDT.jpeg" alt="Seda Özkan" class="team-avatar">
+                    <h3>Seda Özkan</h3>
+                    <div class="team-role">Finans</div>
+                    <p class="team-description">Seda, girişimcilerin finansal yapılarını güçlendirerek yatırım süreçlerini optimize etmelerine yardımcı olur.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/kj2e38gOzVP9.jpeg" alt="Zeynep Korkmaz" class="team-avatar">
+                    <h3>Zeynep Korkmaz</h3>
+                    <div class="team-role">Sağlık</div>
+                    <p class="team-description">Zeynep, sağlık teknolojileri üreten girişimlerin regülasyon ve fonlama süreçlerini yöneterek global büyümelerini sağlar.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="https://r.resimlink.com/tuNavn4E.jpeg" alt="Aslı Arslan" class="team-avatar">
+                    <h3>Aslı Arslan</h3>
+                    <div class="team-role">Eğitim</div>
+                    <p class="team-description">Aslı, eğitimde dijitalleşme vizyonuna sahip girişimlerin iş modellerini geliştirir ve sürdürülebilir yatırımlara dönüştürür.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <div class="partners-text">
+                <h2>Güvenilir Ortaklıklar</h2>
+                <p>İyi bir şirkette çalışıyoruz.</p>
+                <a href="{{ url_for('basari_oykuleri') }}" class="btn-primary">Başarı Hikayelerimizi Görün</a>
+            </div>
+
+            <div class="partners-logos">
+    <div class="partner-logo">
+        <img src="https://img.icons8.com/ios-filled/100/8B3A62/amazon.png" alt="Amazon">
+    </div>
+    <div class="partner-logo">
+        <img src="https://img.icons8.com/ios-filled/100/8B3A62/google-logo.png" alt="Google">
+    </div>
+    <div class="partner-logo">
+    <img src="https://img.icons8.com/ios-filled/100/8B3A62/mac-os.png" alt="Apple">
+</div>
+    <div class="partner-logo">
+        <img src="https://img.icons8.com/ios-filled/100/8B3A62/microsoft.png" alt="Microsoft">
+    </div>
+    <div class="partner-logo">
+        <img src="https://img.icons8.com/ios-filled/100/8B3A62/meta.png" alt="Meta">
+    </div>
+    <div class="partner-logo">
+        <img src="https://img.icons8.com/ios-filled/100/8B3A62/twitter.png" alt="Twitter">
+    </div>
+</div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-text">
+                <h2>50.000'den fazla şirket, işlerini<br>büyütmek için StartHub'ı kullanıyor.</h2>
+            </div>
+            <a href="#" class="cta-button">Başla</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>8000 Marina Blvd, Suite 300 - Brisbane CA 94005 - Birleşik Devletler</p>
+            <p><a href="mailto:info@starthub.example.com">info@starthub.example.com</a></p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Telif hakkı © StartHub</p>
+            <div class="footer-links">
+                <!-- GİZLİ ADMIN LİNKİ -->
+                <a href="{{ url_for('admin_mesajlar') }}" style="color: #6c757d; font-size: 12px;">v2.1</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
